@@ -76,5 +76,7 @@ $diasemna = 0;
         echo "domingo";
         break;
 }
+// fim condicionais
+
 
     
