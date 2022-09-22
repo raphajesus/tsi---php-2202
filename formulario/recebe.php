@@ -7,7 +7,7 @@ $periodo = $_POST ['periodoUsuario'];
 
 
 
-echo "Voce tem $nome,$idade,$cpf,$periodo ";
+echo "Voce tem $nome,$idade,$cpf,$periodo ";    
 
 
 

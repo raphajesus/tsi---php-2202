@@ -9,12 +9,12 @@
 <body>
 
    <form action="recebe.php" method = "post">
-    <label for="nome">Nome</label>
-    <input type = "text" name = "nomeUsuario" id= "nome">
-    <label for="nome">Idade</label>
-    <input type = "text" name = "idadeUsuario" id= "idade">
-    <label for="nome">CPF</label>
-    <input type = "text" name = "cpfUsuario" id= "CPF">
+    <label for="nome">Nome</label><br>
+    <input type = "text" name = "nomeUsuario" id= "nome"><br>
+    <label for="nome">Idade</label><br>
+    <input type = "text" name = "idadeUsuario" id= "idade"><br>
+    <label for="nome">CPF</label><br>
+    <input type = "text" name = "cpfUsuario" id= "CPF"><br>
     <select name="periodoUsuario" id="periodo">
         <option valeue="">Escolha</option>
         <option valeue="matutino">Matutino</option>
