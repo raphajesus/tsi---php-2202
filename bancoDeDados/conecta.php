@@ -10,4 +10,3 @@ $pass = '';
 //conectando SGBD
 $bd = new PDO($dsn, $user, $pass);
 
-var_dump($bd);

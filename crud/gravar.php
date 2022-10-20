@@ -1,41 +1,95 @@
 <?php
-//Buscamos o codigo que conecta SGBD
-require_once '../bancoDeDados/conecta.php';
-//Na linha 3 estamos trazendo todo o  codigo de
-//../bandodeDados/conecta.php para este codigo
-//include_once(); não gera erro fatal se não existir
+
+//buscamos o dado que conecta ao sgdb
+
+require_once '../BancoDeDados/conecta.php';
+
+//include_once não gera erro fatal se não existir SGDB
 
 
-//Dados provenientes do formulario HTML
-$nome = $_POST['nome'];
-$turno = $_POST['turno'];
-$inicio = $_POST['inicio'];
+
+
+
+//dados proviniente do formulário HTML
+
+$nome = $_POST ['nome'];
+
+$periodo = $_POST ['turno'];
+
+$inicio = $_POST ['inicio'];
+
+
+
+
 
 $consulta = 
-    $bd->prepare(' INSERT INTO alunos 
-                (nome, turno, inicio)
-                VALUES
-                      (:nome, :turno, :inicio)');
 
-  /*
-  A função $bd->prepare() retorna
-  outra variavel (objeto), essa outra variavel 
-  consegue  juntar os dados
-  do usuario com a consulta SQL
-  */                    
+        $bd-> prepare('     INSERT INTO alunos
 
-  $consulta->bindParam('nome',$nome);
-  $consulta->bindParam('turno',$turno);
-  $consulta->bindParam('inicio',$inicio);
+                        (nome, turno, inicio)
 
-  /*
-  Afunção $consulta->bindParam()substitui
-  os rotulos (ex.:"nome") pelos dados inseguros
-  */
+                        VALUES
 
-  if($consulta->execute()){
-    echo "GRAVOU COM SUCESSO";
-  }else{
-    echo "DEU ERRO";
-  }
-  //Finalmente executamos a nossa consulta SGBD
+                        (:nome, :turno, :inicio)');
+
+/*
+
+Oq ocorre na linha 13? 
+
+
+
+A função $bd->prepare() responde à  
+
+outra variável (objeto, no caso $consulta),
+
+ essa outra variável consegue juntar os dados do usuário com a consulta SQL 
+
+*/
+
+
+
+
+
+/*
+
+A função $consulta->bindParam() substitui
+
+os rótulos (ex: ":nome") pelos dados 
+
+inseguros
+
+*/
+
+
+
+$consulta->bindParam(':nome', $nome);
+
+$consulta->bindParam(':turno', $turno);
+
+$consulta->bindParam(':inicio', $inicio);
+
+//a função $consulta->bindParam() substitui os rotulos(':nome') pelos dados inseguros
+
+
+
+if( $consulta->execute() ){
+
+    $gravou = true;
+
+}else{
+
+    $gravou = false;
+
+}
+
+// finalmente executamos a consulta no SGDB
+
+
+
+
+
+include 'index.php';
+
+
+
+  
