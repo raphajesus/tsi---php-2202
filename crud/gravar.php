@@ -72,8 +72,7 @@ $consulta->bindParam(':inicio', $inicio);
 
 
 
-if( $consulta->execute() ){
-
+if( $consulta->execute() ){ 
     $gravou = true;
 
 }else{
