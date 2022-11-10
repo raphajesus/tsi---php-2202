@@ -12,4 +12,3 @@ while( $registro = $stmt->fetch(PDO::FETCH_ASSOC) ){
 
 include 'view/listar.php';
 
-

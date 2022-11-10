@@ -14,12 +14,12 @@
 
         <?php
         //mensagem de sucesso ou falha na hora de gravar o aluno
-        if( isset($gravou) ){
+        if( isset($atualizar) ){
 
-            if( !$gravou ){
+            if( $atualizar ){
 
                 echo '  <div class="alert alert-danger" role="alert">
-                            Erro ao tentar gravar o aluno!
+                            aluno não atualizado
                         </div>';
             }else{
 

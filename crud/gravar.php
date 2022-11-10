@@ -1,94 +1,42 @@
 <?php
+//Buscamos o código que conecta no SGBD
+require_once '../bancoDeDados/conecta.php';
+//Na linha 3 estamos trazendo todo o código de
+//../bancoDeDados/conecta.php para este código 
+//include_once(); não gera erro fatal se não existir o arquivo
 
-//buscamos o dado que conecta ao sgdb
-
-require_once '../BancoDeDados/conecta.php';
-
-//include_once não gera erro fatal se não existir SGDB
-
-
-
-
-
-//dados proviniente do formulário HTML
-
-$nome = $_POST ['nome'];
-
-$periodo = $_POST ['turno'];
-
-$inicio = $_POST ['inicio'];
-
-
-
-
+//Dados provenientes do formulário HTML
+$nome = $_POST['nome'];
+$turno = $_POST['turno'];
+$inicio = $_POST['inicio'];
 
 $consulta = 
-
-        $bd-> prepare('     INSERT INTO alunos
-
+    $bd->prepare('  INSERT INTO alunos 
                         (nome, turno, inicio)
-
-                        VALUES
-
+                    VALUES
                         (:nome, :turno, :inicio)');
-
 /*
-
-Oq ocorre na linha 13? 
-
-
-
-A função $bd->prepare() responde à  
-
-outra variável (objeto, no caso $consulta),
-
- essa outra variável consegue juntar os dados do usuário com a consulta SQL 
-
+A função $bd->prepare() retorna 
+outra variável (objeto), essa outra 
+variável consegue juntar os dados 
+do usuário com a consulta SQL
 */
-
-
-
-
-
-/*
-
-A função $consulta->bindParam() substitui
-
-os rótulos (ex: ":nome") pelos dados 
-
-inseguros
-
-*/
-
-
 
 $consulta->bindParam(':nome', $nome);
-
 $consulta->bindParam(':turno', $turno);
-
 $consulta->bindParam(':inicio', $inicio);
+/*
+A função $consulta->bindParam() substitui
+os rótulos (ex.: ":nome") pelos dados 
+inseguros
+*/
 
-//a função $consulta->bindParam() substitui os rotulos(':nome') pelos dados inseguros
-
-
-
-if( $consulta->execute() ){ 
+if( $consulta->execute() ){
     $gravou = true;
-
 }else{
-
     $gravou = false;
-
 }
+//Finalmente executamos a consulta
+//no SGBD
 
-// finalmente executamos a consulta no SGDB
-
-
-
-
-
-include 'index.php';
-
-
-
-  
+include 'index.php';    
